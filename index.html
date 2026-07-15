@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Portfolio</title>
+</head>
+<body>
+    <nav> 
+        <div class="left">
+            <a href="/">Home</a>
+        </div>
+        <div class="right">
+            <a href="https://github.com/saatvik03" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+            </a>
+
+            <a href="mailto:saisaatvik.dandamudi@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!--Hero-->    
+        <section class="hero-section"> 
+            <div class="text">
+                <h2>Hi, I'm Sai</h2>
+                <p> I am a high school student with a strong interest in electrical engineering, embedded systems, and electronics design. Through hands-on projects involving microcontrollers, sensors, and circuit development, I have built a solid foundation in hardware integration and embedded programming. I am eager to apply engineering principles to develop innovative and reliable electronic systems while continuing to expand my technical expertise.</p>
+            
+                <div class="links">    
+                    <a href="#skills">
+                        <i class="fa-solid fa-code"></i>
+                        <span>Skills</span>
+                    </a>
+                    <a href="#projects">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#experiences">
+                        <i class="fa-solid fa-bars"></i>
+                        <span>Experience</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!<div class="picture">
+                <!--<img src="images/hero-headshot.webp" alt="headshot ">-->
+            </div>
+        </section>
+        <!--Skills-->    
+        <section id="skills" class="skills-section">
+            <div class="section-header">
+                <h2>Skills</h2>
+                <p>Software and tools I have experience with.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <img src="images/html-logo.webp" alt="HTML logo">
+                    <span>HTML</span>
+                </div>
+                <div class="skill-card">
+                    <img src="images/Python-logo-notext.svg.webp" alt="Python logo">
+                    <span>Python</span>
+                </div>
+                <div class="skill-card">
+                    <img src="images/onshape.png" alt="Onshape logo">
+                    <span>Onshape</span>
+                </div>
+                <div class="skill-card">
+                    <img src="images/ISO_C++_Logo.svg.webp" alt="C++ logo">
+                    <span>C++</span>
+                </div>
+            </div>
+        </section>
+        <!--Projects-->    
+        <section id="projects" class="projects-section">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Some of my recent work and side projects.</p>
+            </div>
+            <div class="projects-carousel">
+                <button class="carousel-btn prev-btn" aria-label="Previous project">‹</button>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/IMG_1596.jpeg" alt="Project 1 screenshot">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Project 1</h3>
+                        <p class="project-description"></p>
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn" aria-label="Next project">›</button>
+            </div>
+            <div class="project-indicators">
+                <button class="project-dot active" data-index="0" aria-label="Project 1"></button>
+                <button class="project-dot" data-index="1" aria-label="Project 2"></button>
+                <button class="project-dot" data-index="2" aria-label="Project 3"></button>
+                <button class="project-dot" data-index="3" aria-label="Project 4"></button>
+            </div>
+        </section>
+        <!--Experiences-->    
+        <section id="experiences" class="experiences-section">
+            <div class="section-header">
+                <h2>Experiences</h2>
+                <p>My professional experience and career highlights.</p>
+            </div>
+            <div class="experience-container">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Think Neuro</h3>
+                        <span class="experience-date">June 2026 – August 2026</span>
+                    </div>
+                    <p class="experience-role">Participant</p>
+                    <p class="experience-location">Remote</p>
+                    <ul class="experience-details">
+                        <li>Learned and applied Git and GitHub workflows for version control and collaborative software development.</li>
+                        <li>Collaborated with peers to design and develop a software project using industry development practices.</li>
+                        <li>Gained experience with software development lifecycle concepts, including planning, implementation, and testing.</li>
+                        <li>Utilized GitHub for source code management, issue tracking, and project collaboration.</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Sci-MI Research Mentorship</h3>
+                        <span class="experience-date">June 2026 – August 2026</span>
+                    </div>
+                    <p class="experience-role">Learner/Researcher</p>
+                    <p class="experience-location">Remote</p>
+                    <ul class="experience-details">
+                        <li>Conducted independent electrical engineering research.</li>
+                        <li>Evaluated heat sink patterns effectiveness.</li>
+                        <li>Synthesized research findings into technical reports and presentations using evidence-based analysis.</li>
+                        <li>Developed skills in engineering research methodology, technical communication, and critical evaluation of scientific publications.</li>
+                        <li>Presented research progress and incorporated mentor feedback to refine technical analyses and conclusions.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
