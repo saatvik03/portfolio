@@ -1,157 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <link rel="stylesheet" href="styles.css">
-
-    <title>Portfolio</title>
-</head>
-<body>
-    <nav> 
-        <div class="left">
-            <a href="/">Home</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ISM Digital Portfolio</title>
+    <meta
+      name="description"
+      content="Student digital portfolio for ISM with home, about me, about ISM, weekly blog, research, mentorship, and projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="#home" class="brand">ISM</a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About Me</a>
+          <a href="#ism">About ISM</a>
+          <a href="#blog" class="blog-secret-link">Blog</a>
+          <a href="#research">Research</a>
+          <a href="#mentorship">Mentorship</a>
+          <a href="#projects">Projects</a>
         </div>
-        <div class="right">
-            <a href="https://github.com/saatvik03" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-github"></i>
-                <span>GitHub</span>
-            </a>
+      </nav>
+    </header>
 
-            <a href="mailto:saisaatvik.dandamudi@gmail.com">
-                <i class="fa-solid fa-envelope"></i>
-                <span>Email</span>
-            </a>
+    <main class="container">
+      <section id="home" class="section hero">
+        <div class="hero-copy">
+          <p class="eyebrow">ISM Digital Portfolio</p>
+          <h1>Sai Dandamudi</h1>
+          <h2>Electrical Engineering, specifically PCB Design</h2>
+          <blockquote>
+            “The wise man knows he doesn't know. The fool doesn't know he doesn't know.”
+          </blockquote>
+          <p>
+            My digital footprint is an online portfolio of who I am, what I care about, and how I am developing professionally through the Independent Study and Mentorship program.
+          </p>
+          <div class="cta-row">
+            <a class="primary-btn" href="#about">About Me</a>
+            <a class="secondary-btn" href="#projects">Projects</a>
+          </div>
         </div>
-    </nav>
+      </section>
 
-    <main>
-        <!--Hero-->    
-        <section class="hero-section"> 
-            <div class="text">
-                <h2>Hi, I'm Sai</h2>
-                <p> I am a high school student with a strong interest in electrical and computer engineering, embedded systems, and electronics design. Through hands-on projects involving microcontrollers, sensors, and circuit development, I have built a solid foundation in hardware integration and embedded programming. I am eager to apply engineering principles to develop innovative and reliable electronic systems while continuing to expand my technical expertise.</p>
-            
-                <div class="links">    
-                    <a href="#skills">
-                        <i class="fa-solid fa-code"></i>
-                        <span>Skills</span>
-                    </a>
-                    <a href="#projects">
-                        <i class="fa-solid fa-briefcase"></i>
-                        <span>Projects</span>
-                    </a>
-                    <a href="#experiences">
-                        <i class="fa-solid fa-bars"></i>
-                        <span>Experience</span>
-                    </a>
-                </div>
+      <section id="about" class="section">
+        <div class="section-header">
+          <p class="eyebrow">About Me</p>
+          <h3>Professional Profile</h3>
+        </div>
+
+        <div class="about-grid">
+          <div class="portrait-card">
+            <img
+              src="images/3033FDEC-4A11-4D3B-9131-9654F1796EE1.jpg"
+              alt="Professional portrait of Sai Dandamudi"
+            />
+          </div>
+
+          <div class="profile-card">
+            <h4>Sai Dandamudi</h4>
+            <p>
+              I am a high school student with a strong interest in electrical and computer engineering, embedded systems, and electronics design. Through hands-on projects involving microcontrollers, sensors, and circuit development, I have built a solid foundation in hardware integration and embedded programming. I am eager to apply engineering principles to develop innovative and reliable electronic systems while continuing to expand my technical expertise.
+            </p>
+            <p>
+              Through ISM, I have developed a stronger understanding of the field while improving my research, communication, and professional habits. I hope to continue learning and contributing in a way that reflects my values and ambitions.
+            </p>
+
+            <div class="info-box">
+              <h5>Mission Statement</h5>
+              <p>
+                My mission is to use Computer Engineering to create PCBs that power intelligent, automated hardware solutions.
+              </p>
             </div>
-            
-            <!<div class="picture">
-                <!--<img src="images/hero-headshot.webp" alt="headshot ">-->
+
+            <div class="info-box">
+              <h5>Contact Information</h5>
+              <p><i class="fa-solid fa-envelope"></i> saidandamudi@email.com</p>
             </div>
-        </section>
-        <!--Skills-->    
-        <section id="skills" class="skills-section">
-            <div class="section-header">
-                <h2>Skills</h2>
-                <p>Software and tools I have experience with.</p>
+          </div>
+        </div>
+
+        <div class="resume-box">
+          <div class="resume-header">
+            <div>
+              <p class="eyebrow">Résumé</p>
+              <h4>Professional Summary</h4>
             </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <img src="images/html-logo.webp" alt="HTML logo">
-                    <span>HTML</span>
-                </div>
-                <div class="skill-card">
-                    <img src="images/Python-logo-notext.svg.webp" alt="Python logo">
-                    <span>Python</span>
-                </div>
-                <div class="skill-card">
-                    <img src="images/onshape.png" alt="Onshape logo">
-                    <span>Onshape</span>
-                </div>
-                <div class="skill-card">
-                    <img src="images/ISO_C++_Logo.svg.webp" alt="C++ logo">
-                    <span>C++</span>
-                </div>
+            <a class="mini-btn" href="Sai%20Dandamudi%20Resume%20-2026.docx.pdf" download>
+              <i class="fa-solid fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <div class="resume-content">
+            <div>
+              <h5>Education</h5>
+              <p>High School Name, City, State</p>
+              <p>Expected Graduation: 2027</p>
             </div>
-        </section>
-        <!--Projects-->    
-        <section id="projects" class="projects-section">
-            <div class="section-header">
-                <h2>Projects</h2>
-                <p>Some of my recent work and side projects.</p>
+            <div>
+              <h5>Skills</h5>
+              <ul>
+                <li>PCB design</li>
+                <li>Embedded systems</li>
+                <li>Research and analysis</li>
+                <li>Professional communication</li>
+              </ul>
             </div>
-            <div class="projects-carousel">
-                <button class="carousel-btn prev-btn" aria-label="Previous project">‹</button>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/IMG_1596.jpeg" alt="Project 1 screenshot">
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Project 1</h3>
-                        <p class="project-description"></p>
-                    </div>
-                </div>
-                <button class="carousel-btn next-btn" aria-label="Next project">›</button>
+            <div>
+              <h5>Experience</h5>
+              <p>Independent Study and Mentorship Program</p>
+              <p>Research, interviews, mentorship, and portfolio development</p>
             </div>
-            <div class="project-indicators">
-                <button class="project-dot active" data-index="0" aria-label="Project 1"></button>
-                <button class="project-dot" data-index="1" aria-label="Project 2"></button>
-                <button class="project-dot" data-index="2" aria-label="Project 3"></button>
-                <button class="project-dot" data-index="3" aria-label="Project 4"></button>
+          </div>
+
+          <div class="linkedin-row">
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer noopener">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="ism" class="section">
+        <div class="section-header">
+          <p class="eyebrow">About ISM</p>
+          <h3>Independent Study and Mentorship</h3>
+        </div>
+
+        <div class="ism-grid">
+          <div class="ism-logo">
+            <div class="logo-circle">ISM</div>
+          </div>
+
+          <div class="ism-copy">
+            <p>
+              The Independent Study and Mentorship (ISM) program gives students the opportunity to explore a field of interest through guided research, mentorship, and personal development.
+            </p>
+            <p>
+              Students connect with professionals, conduct meaningful research, and build skills in communication, planning, and presentation. ISM helps prepare students for future opportunities in college, internships, and their careers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" class="section">
+        <div class="section-header">
+          <p class="eyebrow">Weekly Progress Updates</p>
+          <h3 id="blogSecretToggle" class="blog-title">Blog</h3>
+        </div>
+
+        <div id="blogEditorControls" class="blog-editor-controls hidden">
+          <button id="addBlogButton" type="button">Add Post</button>
+        </div>
+
+        <div id="blogList" class="blog-grid"></div>
+      </section>
+
+      <section id="research" class="section">
+        <div class="section-header">
+          <p class="eyebrow">Research</p>
+          <h3>Source Collection</h3>
+        </div>
+
+        <div class="research-grid">
+          <div class="research-column">
+            <h4>Primary Sources</h4>
+            <div class="source-card">
+              <h5>Interview: Professional Name</h5>
+              <p><strong>Company:</strong> Placeholder Company</p>
+              <p><strong>Topic:</strong> Industry overview and career insight</p>
             </div>
-        </section>
-        <!--Experiences-->    
-        <section id="experiences" class="experiences-section">
-            <div class="section-header">
-                <h2>Experiences</h2>
-                <p>My professional experience.</p>
+            <div class="source-card">
+              <h5>Interview: Professional Name</h5>
+              <p><strong>Company:</strong> Placeholder Company</p>
+              <p><strong>Topic:</strong> Professional path and advice</p>
             </div>
-            <div class="experience-container">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <h3>Think Neuro</h3>
-                        <span class="experience-date">June 2026 – August 2026</span>
-                    </div>
-                    <p class="experience-role">Participant</p>
-                    <p class="experience-location">Remote</p>
-                    <ul class="experience-details">
-                        <li>Learned and applied Git and GitHub workflows for version control and collaborative software development.</li>
-                        <li>Collaborated with peers to design and develop a software project using industry development practices.</li>
-                        <li>Gained experience with software development lifecycle concepts, including planning, implementation, and testing.</li>
-                        <li>Utilized GitHub for source code management, issue tracking, and project collaboration.</li>
-                    </ul>
-                </div>
-                <!--
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <h3>Sci-MI Research Mentorship</h3>
-                        <span class="experience-date">June 2026 – August 2026</span>
-                    </div>
-                    <p class="experience-role">Learner/Researcher</p>
-                    <p class="experience-location">Remote</p>
-                    <ul class="experience-details">
-                        <li>Conducted independent electrical and computer engineering research.</li>
-                        <li>Evaluated heat sink patterns effectiveness.</li>
-                        <li>Synthesized research findings into technical reports and presentations using evidence-based analysis.</li>
-                        <li>Developed skills in engineering research methodology, technical communication, and critical evaluation of scientific publications.</li>
-                        <li>Presented research progress and incorporated mentor feedback to refine technical analyses and conclusions.</li>
-                    </ul>
-                </div>
-                -->
+            <div class="source-card">
+              <h5>Mentor Visit</h5>
+              <p><strong>Topic:</strong> Research discussion and project feedback</p>
             </div>
-        </section>
+            <div class="source-card">
+              <h5>Observation</h5>
+              <p><strong>Event:</strong> Placeholder event or experience observed</p>
+            </div>
+          </div>
+
+          <div class="research-column">
+            <h4>Secondary Sources</h4>
+            <div class="source-card">
+              <h5>Article: Topic Placeholder</h5>
+              <p><strong>Subject:</strong> Current research and industry trends</p>
+            </div>
+            <div class="source-card">
+              <h5>Article: Topic Placeholder</h5>
+              <p><strong>Subject:</strong> Background information and educational context</p>
+            </div>
+            <div class="source-card">
+              <h5>Article: Topic Placeholder</h5>
+              <p><strong>Subject:</strong> Professional practice and application</p>
+            </div>
+            <div class="source-card">
+              <h5>Article: Topic Placeholder</h5>
+              <p><strong>Subject:</strong> Research methodology and best practices</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mentorship" class="section">
+        <div class="section-header">
+          <p class="eyebrow">Mentorship</p>
+          <h3>Mentor Profile</h3>
+        </div>
+
+        <div class="mentor-card">
+          <img
+            src="images/testimony-headshot.webp"
+            alt="Placeholder mentor portrait"
+          />
+          <div>
+            <h4>Mentor Name</h4>
+            <p class="mentor-role">Professional Title / Company</p>
+            <p>
+              Mentor bio placeholder. This section will include background, experience, and the professional guidance that supports the student’s research and growth.
+            </p>
+            <p>
+              The mentor helps build knowledge, refine project direction, and encourage thoughtful reflection throughout the learning process.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-header">
+          <p class="eyebrow">Projects</p>
+          <h3>Original Work and Final Product</h3>
+        </div>
+
+        <div class="projects-carousel">
+          <button class="carousel-btn prev-btn" aria-label="Previous project">‹</button>
+          <div class="project-card-main">
+            <div class="project-image-wrap">
+              <img src="images/IMG_2237.webp" alt="Project preview" />
+            </div>
+            <div class="project-info">
+              <h4 class="project-title">Plant Soil Moisture Monitoring System</h4>
+              <p class="project-description">
+                Designed and programmed an ESP32-based soil moisture monitoring system that collects real-time sensor data and displays plant moisture levels on a TFT display.
+              </p>
+            </div>
+          </div>
+          <button class="carousel-btn next-btn" aria-label="Next project">›</button>
+        </div>
+
+        <div class="project-indicators">
+          <button class="project-dot active" data-index="0" aria-label="Project 1"></button>
+          <button class="project-dot" data-index="1" aria-label="Project 2"></button>
+          <button class="project-dot" data-index="2" aria-label="Project 3"></button>
+          <button class="project-dot" data-index="3" aria-label="Project 4"></button>
+        </div>
+
+        <div class="project-grid">
+          <div class="project-column">
+            <h4>Original Work</h4>
+            <div class="project-card">
+              <h5>Research Proposal</h5>
+              <p>A plan for the project question, goals, method, and process behind the investigation.</p>
+            </div>
+            <div class="project-card">
+              <h5>Field Notes</h5>
+              <p>Documentation of mentor meetings, interview insights, and observations made during the research process.</p>
+            </div>
+          </div>
+
+          <div class="project-column">
+            <h4>Final Product</h4>
+            <div class="project-card">
+              <h5>Research Showcase</h5>
+              <p>A summary of findings, conclusions, and the broader significance of the work.</p>
+            </div>
+            <div class="project-card">
+              <h5>Presentation</h5>
+              <p>A final presentation highlighting process, learning, and the impact of mentorship.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <script src="script.js" defer></script>
-</body>
+
+    <footer class="site-footer">
+      <p>ISM Digital Portfolio | Built for academic and professional growth</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
