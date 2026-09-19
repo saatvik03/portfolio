@@ -440,6 +440,31 @@ blockquote {
   margin-bottom: 4px;
 }
 
+.research-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.research-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #0d1716;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(79, 183, 110, 0.18);
+}
+
+.research-download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(79, 183, 110, 0.22);
+}
+
 .source-card {
   padding: 18px 20px;
 }
