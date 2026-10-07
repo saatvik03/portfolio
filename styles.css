@@ -356,6 +356,16 @@ blockquote {
   padding: 28px;
   text-align: center;
   background: linear-gradient(135deg, #152326 0%, #1e2d32 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ism-logo img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  border-radius: 24px;
 }
 
 .logo-circle {
