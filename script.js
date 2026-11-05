@@ -137,15 +137,186 @@ const defaultBlogPosts = [
       'Recently, ISM has really been drowning me in work, but I’ve been getting used to it. Firstly, I’ve been making a new personal website using HTML and CSS since my previous one wasn’t too ISM-focused. Other than the features we have to have on the website by default, I’m planning to make a login feature for myself so I can edit my weekly reports on the website itself instead of writing new code and uploading it again, which is a hassle. I also want to set up a LinkedIn account so I can add it onto my website and prepare myself for contacting professionals.\n\nIn the previous week, I finished my annotated bibliography on PCB design. From doing it, I learned a lot about how to manage heat to improve reliability, how good routing procedures can help with signal integrity, how a PCB is actually manufactured, how to use DC-DC buck converters to step down voltage, and basic terminology to understand all this. After completing this task, I want to go further into learning common software that can be used to design PCBs, learn how to actually use these tools, and practice them myself. I want to do this so that when I get a mentor, I wouldn’t have to waste time learning these skills then. Overall, I was able to better understand where I need to focus on this week to better prepare myself for the future.'
   },
   {
-    date: 'Aug 31 2026',
-    title: 'Laying the Foundation',
+    date: 'Sep 28 2026',
+    title: 'Building the Foundation',
     content:
-      'Over the past week I have been growing accustomed to ISM. We had tons of stuff to do. Firstly I started updating my calendar listing everything that might conflict with ISM, although I am done with it now I feel like I should spend some time outside or inside of class migrating it to google calendars so I can view everything ISM related with all of my test dates, but there are more important things to do first.\n\nOne of these things is completing my contact list. The way I am going to accomplish this is by going on linkedIn looking for people who I think can guide me on the path I want to go into regarding electrical engineering, hopefully I can find 15 of them soon. An item I have finished was my report on the market I was interested in, the PCB market. I have looked into it using about 5 sources and I’ve learnt that AI isn’t the only thing supporting the market’s growth, but sectors like renewable energy and internet are also the cause of its growth.'
+      'This week, I continued refining my understanding of the PCB industry while also expanding my research process. I spent time organizing my sources and thinking more critically about which topics are most valuable for my project and future mentor conversations. One of the biggest lessons I learned is that good research is not just about collecting information, but about asking the right questions and making connections between different ideas.\n\nI also began looking more seriously at how I can present myself professionally in the field of electrical engineering. I am starting to see that being prepared is not only about technical knowledge, but also about communication, planning, and making a clear case for my interests. This helped me better understand how to approach my mentor search and how to frame my goals in a way that is both thoughtful and confident.'
+  },
+  {
+    date: 'Oct 12 2026',
+    title: 'Expanding My Perspective',
+    content:
+      'The past few weeks have reinforced the importance of staying organized and focused in ISM. I have been balancing research, project planning, and professional development, and I have seen how each task supports the others. One area that stood out to me was how much of engineering is rooted in problem-solving skills that go beyond just technical knowledge. Being able to think systematically and communicate clearly is just as important as understanding a circuit or a design process.\n\nI also spent time looking deeper into how PCB design fits into larger industries such as robotics, renewable energy, and consumer electronics. This helped me realize that I want to pursue work that combines practical technology with real-world impact. The more I learn, the more I see how valuable it is to build a strong foundation now, especially before I begin working with a mentor or pursuing more advanced opportunities.'
+  },
+  {
+    date: 'Oct 26 2026',
+    title: 'From Research to Direction',
+    content:
+      'This week, I focused on connecting the information I have gathered to the direction I want my ISM experience to take. The research I have done on PCB design has made me more certain that this is a field I want to study seriously. I am beginning to understand not only what PCBs are, but also how important design choices are in determining performance, reliability, and manufacturability. That understanding has made me more motivated to continue learning and practicing.\n\nAt the same time, I have been thinking more about how to turn my interest into action. I want to build my skills in a way that is meaningful and measurable, so I have been identifying the next steps I should take to grow professionally. I see ISM as a way to refine that path and create a stronger foundation for the future, especially through mentorship, research, and hands-on exploration.'
+  },
+  {
+    date: 'Nov 09 2026',
+    title: 'Designing the Next Step',
+    content:
+      'During this period of ISM, I have started to feel more confident about where my interests are leading me. I understand that my goal is not simply to learn about electrical engineering in general, but to focus specifically on how I can contribute to fields like PCB design and hardware development. The more I study this area, the more I appreciate how much there is to learn about design choices, signal flow, power distribution, and reliability.\n\nI also feel that my ability to organize my work and reflect on my growth is improving. I am beginning to see how the research, project planning, and communication aspects of ISM all fit together. This is helping me move from just accumulating information to turning it into a clearer personal direction, which is an important step in preparing for mentorship and future opportunities.'
+  },
+  {
+    date: 'Nov 23 2026',
+    title: 'Turning Interest into Momentum',
+    content:
+      'This week, I reflected on how far I have come in narrowing my focus and understanding my professional interests. I am becoming more intentional about the direction I want to pursue, especially in areas connected to engineering design and electronics. Research has helped me recognize that I do not just want to learn theory in isolation; I want to build practical understanding that can apply to real products and systems.\n\nI also see the value in continuing to ask questions and stay curious. ISM has pushed me to think beyond just what I am interested in and instead consider how I can apply that interest in meaningful ways. I want to keep building my knowledge, strengthen my skills, and continue preparing myself for future coursework, mentorship, and career opportunities in engineering.'
   }
 ];
 
 const STORAGE_KEY = 'ismBlogPosts';
-let blogPosts = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultBlogPosts;
+const BACKUP_STORAGE_KEY = 'ismBlogPostsBackup';
+const MAX_POSTS = 200;
+const firebaseConfig = window.firebaseConfig || null;
+let firebaseDb = null;
+let firebaseReady = false;
+
+async function ensureFirebaseReady() {
+  if (!firebaseConfig || firebaseConfig.projectId === 'YOUR_PROJECT_ID') {
+    return null;
+  }
+
+  if (firebaseDb) {
+    return firebaseDb;
+  }
+
+  try {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');
+    const { getDatabase } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js');
+
+    const app = initializeApp(firebaseConfig);
+    firebaseDb = getDatabase(app);
+    firebaseReady = true;
+    return firebaseDb;
+  } catch (error) {
+    console.warn('Firebase not configured or unavailable. Falling back to browser storage:', error);
+    firebaseReady = false;
+    return null;
+  }
+}
+
+async function readRemoteBlogPosts() {
+  const db = await ensureFirebaseReady();
+  if (!db) return null;
+
+  try {
+    const { ref, get } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js');
+    const snapshot = await get(ref(db, 'blogPosts'));
+
+    if (!snapshot.exists()) {
+      return null;
+    }
+
+    const remotePosts = normalizeBlogPosts(snapshot.val());
+    if (remotePosts) {
+      writeStorageValue(STORAGE_KEY, JSON.stringify(remotePosts));
+      writeStorageValue(BACKUP_STORAGE_KEY, JSON.stringify(remotePosts));
+      return remotePosts;
+    }
+  } catch (error) {
+    console.warn('Could not read blog posts from Firebase:', error);
+  }
+
+  return null;
+}
+
+async function writeRemoteBlogPosts(posts) {
+  const db = await ensureFirebaseReady();
+  if (!db) return false;
+
+  try {
+    const { ref, set } = await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js');
+    await set(ref(db, 'blogPosts'), posts.slice(0, MAX_POSTS));
+    return true;
+  } catch (error) {
+    console.warn('Could not save blog posts to Firebase. Browser backup remains intact:', error);
+    return false;
+  }
+}
+
+function readStorageValue(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeStorageValue(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    console.warn('Could not save blog posts to browser storage:', error);
+  }
+}
+
+function normalizeBlogPosts(value) {
+  if (!Array.isArray(value)) return null;
+
+  const normalizedPosts = value
+    .filter((post) => post && typeof post === 'object')
+    .map((post) => ({
+      date: typeof post.date === 'string' && post.date.trim() ? post.date.trim() : 'No date',
+      title: typeof post.title === 'string' && post.title.trim() ? post.title.trim() : 'Untitled post',
+      content: typeof post.content === 'string' ? post.content.trim() : ''
+    }))
+    .filter((post) => post.content || post.title);
+
+  return normalizedPosts.length ? normalizedPosts : null;
+}
+
+async function loadBlogPosts() {
+  const remotePosts = await readRemoteBlogPosts();
+  if (remotePosts) {
+    return remotePosts;
+  }
+
+  const storageCandidates = [
+    { key: STORAGE_KEY, label: 'primary' },
+    { key: BACKUP_STORAGE_KEY, label: 'backup' }
+  ];
+
+  for (const candidate of storageCandidates) {
+    const storedValue = readStorageValue(candidate.key);
+    if (!storedValue) continue;
+
+    try {
+      const parsedValue = JSON.parse(storedValue);
+      const normalizedPosts = normalizeBlogPosts(parsedValue);
+
+      if (normalizedPosts) {
+        if (candidate.key === STORAGE_KEY) {
+          writeStorageValue(BACKUP_STORAGE_KEY, JSON.stringify(normalizedPosts));
+        }
+        return normalizedPosts;
+      }
+    } catch (error) {
+      console.warn(`Could not parse blog posts from ${candidate.label} storage:`, error);
+    }
+  }
+
+  const backupValue = readStorageValue(BACKUP_STORAGE_KEY);
+  if (backupValue) {
+    try {
+      const parsedValue = JSON.parse(backupValue);
+      const normalizedPosts = normalizeBlogPosts(parsedValue);
+      if (normalizedPosts) {
+        writeStorageValue(STORAGE_KEY, JSON.stringify(normalizedPosts));
+        return normalizedPosts;
+      }
+    } catch (error) {
+      console.warn('Could not restore blog posts from backup storage:', error);
+    }
+  }
+
+  return [...defaultBlogPosts];
+}
+
+let blogPosts = [...defaultBlogPosts];
 let blogEditorEnabled = false;
 
 const blogList = document.getElementById('blogList');
@@ -155,7 +326,19 @@ const blogSecretToggle = document.getElementById('blogSecretToggle');
 const blogSecretLink = document.querySelector('.blog-secret-link');
 
 function saveBlogPosts() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(blogPosts));
+  const trimmedPosts = blogPosts.slice(0, MAX_POSTS);
+  const serializedPosts = JSON.stringify(trimmedPosts);
+
+  writeStorageValue(STORAGE_KEY, serializedPosts);
+  writeStorageValue(BACKUP_STORAGE_KEY, serializedPosts);
+
+  try {
+    sessionStorage.setItem(STORAGE_KEY, serializedPosts);
+  } catch (error) {
+    console.warn('Could not save a session backup of blog posts:', error);
+  }
+
+  writeRemoteBlogPosts(trimmedPosts);
 }
 
 function renderBlogPosts() {
@@ -277,4 +460,24 @@ blogSecretToggle?.addEventListener('dblclick', toggleBlogEditor);
 blogSecretLink?.addEventListener('dblclick', toggleBlogEditor);
 addBlogButton?.addEventListener('click', addBlogPost);
 
-renderBlogPosts();
+window.addEventListener('storage', (event) => {
+  if (event.key !== STORAGE_KEY || !event.newValue) return;
+
+  try {
+    const parsedValue = JSON.parse(event.newValue);
+    const normalizedPosts = normalizeBlogPosts(parsedValue);
+    if (normalizedPosts) {
+      blogPosts = normalizedPosts;
+      renderBlogPosts();
+    }
+  } catch (error) {
+    console.warn('Could not sync blog posts from another tab:', error);
+  }
+});
+
+async function initializeBlogPosts() {
+  blogPosts = (await loadBlogPosts()) || [...defaultBlogPosts];
+  renderBlogPosts();
+}
+
+initializeBlogPosts();
