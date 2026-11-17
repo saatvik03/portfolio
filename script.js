@@ -168,6 +168,23 @@ const defaultBlogPosts = [
   }
 ];
 
+function mergeDefaultBlogPosts(posts) {
+  if (!Array.isArray(posts)) return [...defaultBlogPosts];
+
+  const mergedPosts = [...defaultBlogPosts];
+  const seenKeys = new Set(defaultBlogPosts.map((post) => `${post.date}::${post.title}`.toLowerCase()));
+
+  posts.forEach((post) => {
+    const key = `${post.date}::${post.title}`.toLowerCase();
+    if (!seenKeys.has(key)) {
+      mergedPosts.push(post);
+      seenKeys.add(key);
+    }
+  });
+
+  return mergedPosts;
+}
+
 const STORAGE_KEY = 'ismBlogPosts';
 const BACKUP_STORAGE_KEY = 'ismBlogPostsBackup';
 const MAX_POSTS = 200;
@@ -214,10 +231,11 @@ function loadStoredPosts() {
       const parsed = JSON.parse(raw);
       const cleaned = normalizeBlogPosts(parsed);
       if (cleaned) {
+        const merged = mergeDefaultBlogPosts(cleaned);
         if (key === STORAGE_KEY) {
-          writeStorageValue(BACKUP_STORAGE_KEY, JSON.stringify(cleaned));
+          writeStorageValue(BACKUP_STORAGE_KEY, JSON.stringify(merged));
         }
-        return cleaned;
+        return merged;
       }
     } catch (error) {
       console.warn('Could not load saved blog posts:', error);
@@ -230,8 +248,9 @@ function loadStoredPosts() {
       const parsed = JSON.parse(backup);
       const cleaned = normalizeBlogPosts(parsed);
       if (cleaned) {
-        writeStorageValue(STORAGE_KEY, JSON.stringify(cleaned));
-        return cleaned;
+        const merged = mergeDefaultBlogPosts(cleaned);
+        writeStorageValue(STORAGE_KEY, JSON.stringify(merged));
+        return merged;
       }
     } catch (error) {
       console.warn('Could not restore blog posts from backup storage:', error);
